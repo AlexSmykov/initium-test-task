@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  height: 100vh;
+
+  .main-wrapper {
+    --wrapper-padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    height: calc(100% - var(--wrapper-padding) * 2);
+    padding: var(--wrapper-padding);
+
+    background: var(--backgroud-color);
+
+    overflow: hidden;
+
+    .users {
+      &__header {
+        margin-left: 12px;
+        color: var(--primary-text-color);
+      }
+    }
+  }
+}
