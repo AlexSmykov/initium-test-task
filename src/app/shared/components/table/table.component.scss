@@ -1,0 +1,113 @@
+:host {
+  display: block;
+  width: 100%;
+
+  .table {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    overflow: hidden; // Для использования родительского компонента как маски
+    background: var(--default-white-color);
+    border-radius: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding-left: 16px;
+    }
+
+    &__action-buttons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+
+      height: 56px;
+
+      &__one {
+        &.disabled {
+          pointer-events: none;
+
+          .table__action-buttons__icon {
+            color: var(--icon-disable-color);
+          }
+        }
+      }
+    }
+
+    &__headers {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+
+      height: 48px;
+
+      &__one {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        &__text {
+          width: fit-content;
+          color: var(--header-text-color);
+        }
+      }
+    }
+
+    &__items {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+
+      height: 48px;
+      border-top: 1px solid var(--list-item-border-color);
+
+      &:hover {
+        background: var(--list-item-hover-color);
+      }
+
+      &.selected {
+        background: var(--list-item-selected-color);
+      }
+
+      &__one {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        &__text {
+          width: fit-content;
+        }
+      }
+    }
+
+    .left {
+      justify-content: flex-start;
+    }
+
+    .right {
+      justify-content: flex-end;
+    }
+
+    .clickable {
+      &:hover {
+        color: var(--hover-selectable-text-color);
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__sort-arrows {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+  }
+}

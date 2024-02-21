@@ -1,0 +1,29 @@
+<app-table
+  [items]="users$"
+  [configs]="tableConfigs"
+  (create)="isCreateModalShow = true"
+  (delete)="onItemsDelete($event)"
+  (itemClicked)="onItemClicked($event)"
+  (sortChange)="onSortChange($event)"
+></app-table>
+
+<!--Модалка создания пользователя-->
+<app-modal
+  *ngIf="isCreateModalShow"
+  [config]="createModalConfig"
+  [okButtonDisable]="userForm.userFormGroup.invalid"
+  (close)="closeCreateModal()"
+  (okAction)="userForm.saveUser(); isCreateModalShow = false"
+>
+  <app-user-form-modal #userForm></app-user-form-modal>
+</app-modal>
+
+<!--Модалка удаления пользователя-->
+<app-modal
+  *ngIf="isDeleteModalShow"
+  [config]="deleteModalConfig"
+  (close)="closeDeleteModal()"
+  (okAction)="userDelete.deleteUsers(); isDeleteModalShow = false"
+>
+  <app-user-delete-modal #userDelete></app-user-delete-modal>
+</app-modal>

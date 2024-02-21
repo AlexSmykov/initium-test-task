@@ -1,0 +1,106 @@
+<ul class="table">
+  <li class="table__action-buttons">
+    <app-clickable-icon
+      class="table__action-buttons__one"
+      (click)="create.emit()"
+    >
+      <svg-icon src="assets/icons/add.svg"></svg-icon>
+    </app-clickable-icon>
+
+    <app-clickable-icon
+      class="table__action-buttons__one"
+      [ngClass]="{ disabled: !anyItemSelected }"
+      (click)="onDelete()"
+    >
+      <svg-icon
+        class="table__action-buttons__icon"
+        src="assets/icons/delete.svg"
+      ></svg-icon>
+    </app-clickable-icon>
+  </li>
+
+  <li class="table__headers">
+    <div class="table__checkbox">
+      <app-checkbox
+        #allCheckboxComponent
+        [formControl]="allCheckboxControl"
+      ></app-checkbox>
+    </div>
+
+    <ng-container *ngFor="let header of configs">
+      <div
+        class="table__headers__one"
+        [ngStyle]="{ flex: header.sizeInPercent }"
+        [ngClass]="header.textAlign"
+      >
+        <p
+          class="table__headers__one__text clickable"
+          (click)="onSortChanges(header.key)"
+        >
+          {{ header.title }}
+        </p>
+        <ng-container *ngIf="header.isSortable">
+          <ng-container
+            *ngTemplateOutlet="
+              sortArrowsTemplate;
+              context: { $implicit: header.key }
+            "
+          ></ng-container>
+        </ng-container>
+      </div>
+    </ng-container>
+
+    <div
+      class="table__item__spacer"
+      [ngStyle]="{ flex: 100 - itemsWidthInPercent }"
+    ></div>
+  </li>
+
+  <ng-container *ngFor="let item of items | async; let i = index">
+    <li class="table__items" (click)="itemSelectCheckbox.onClick()">
+      <div class="table__checkbox">
+        <app-checkbox
+          #itemSelectCheckbox
+          [formControl]="checkboxFormArray.controls[i]"
+        ></app-checkbox>
+      </div>
+
+      <ng-container *ngFor="let header of configs">
+        <div
+          class="table__items__one"
+          [ngStyle]="{ flex: header.sizeInPercent }"
+          [ngClass]="header.textAlign"
+        >
+          <p
+            class="table__items__one__text"
+            [ngClass]="{ clickable: header.isClickable }"
+            (click)="
+              header.isClickable ? itemClicked.emit(item) : {};
+              $event.stopPropagation()
+            "
+          >
+            {{ $any(item)[header.key] }}
+          </p>
+        </div>
+      </ng-container>
+
+      <div
+        class="table__item__spacer"
+        [ngStyle]="{ flex: 100 - itemsWidthInPercent }"
+      ></div>
+    </li>
+  </ng-container>
+</ul>
+
+<ng-template #sortArrowsTemplate let-field>
+  <div class="table__sort-arrows">
+    <svg-icon
+      *ngIf="getFieldSortStateByField(field) === ESortState.ASCENDING"
+      src="assets/icons/arrow-up.svg"
+    ></svg-icon>
+    <svg-icon
+      *ngIf="getFieldSortStateByField(field) === ESortState.DESCENDING"
+      src="assets/icons/arrow-down.svg"
+    ></svg-icon>
+  </div>
+</ng-template>

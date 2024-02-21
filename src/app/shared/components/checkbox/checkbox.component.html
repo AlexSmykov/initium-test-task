@@ -1,0 +1,21 @@
+<div (click)="onClick(); $event.stopPropagation()" class="checkbox">
+  <ng-container [ngSwitch]="currentState">
+    <svg-icon
+      *ngSwitchCase="ECheckboxValue.UNCHECKED"
+      class="checkbox__unchecked"
+      src="assets/icons/checkbox/unchecked.svg"
+    ></svg-icon>
+
+    <svg-icon
+      *ngSwitchCase="ECheckboxValue.INDETERMINATE"
+      class="checkbox__indeterminate"
+      src="assets/icons/checkbox/indeterminate.svg"
+    ></svg-icon>
+
+    <svg-icon
+      *ngSwitchCase="ECheckboxValue.CHECKED"
+      class="checkbox__checked"
+      src="assets/icons/checkbox/checked.svg"
+    ></svg-icon>
+  </ng-container>
+</div>

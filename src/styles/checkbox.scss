@@ -1,0 +1,27 @@
+input[type='checkbox'] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+
+  &:before {
+    content: '';
+    font-size: 15px;
+    background: transparent !important;
+    display: block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--checkbox-border-color);
+    border-radius: 2px;
+  }
+
+  &:after {
+    content: '\2713';
+    font-size: 15px;
+    background: transparent !important;
+    display: block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--checkbox-border-color);
+    border-radius: 2px;
+  }
+}
