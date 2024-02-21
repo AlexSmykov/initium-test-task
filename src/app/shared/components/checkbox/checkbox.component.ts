@@ -1,5 +1,5 @@
 import { Component, forwardRef } from '@angular/core'
-import { ECheckboxValue } from './checkbox.interface'
+import { ECheckboxValue } from 'src/app/shared/components/checkbox/checkbox.enum'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 
 @Component({
