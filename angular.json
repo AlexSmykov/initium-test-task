@@ -57,11 +57,9 @@
           "configurations": {
             "production": {
               "browserTarget": "initium-test-task:build:production",
-              "proxyConfig": "proxy.conf.json"
             },
             "development": {
               "browserTarget": "initium-test-task:build:development",
-              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

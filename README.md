@@ -1,27 +1,39 @@
-# InitiumTestTask
+# Тестовое задание в компанию "Инициум"
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+Тестовое задание представляет собой таблицу пользователей, с возможность добавлять, редактировать и удалять элементы.
+Как бонусное задание, элементы сохраняются в локальное хранилище и есть возможность сортировать таблицу.
 
-## Development server
+- [Основные консольные команды](#основные-консольные-команды)
+- [Разворачивание проекта](#разворачивание-проекта)
+- [Принятые соглашения](#принятые-соглашения)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Основные консольные команды
 
-## Code scaffolding
+- `npm run start` - стартует сервер для разработки по адресу. [`http://localhost:4201/`](http://localhost:4201/).
+- `npm run build` - собирает проект в директорию `dist/`.
+- `npm run refactor` - запускает eslint и prettier для рефакторинга проекта, используя конфиги.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Разворачивание проекта
 
-## Build
+Проект разварачивается как обычное, самоу дефолтное ангуляр-приложение.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Принятые соглашения
 
-## Running unit tests
+- На проекте установлен `prettier` для единообразного форматирования кода. С настройками можно ознакомиться в файле `.prettierrc.json`.
+- На проекте используется `pre-commit` хук для запуска `prettier` и `eslint`, чтобы проверить правильность форматирования кода. Убедитесь,
+  что в вашем редакторе/IDE установлено расширение для роботы с `prettier` и `eslint` и включена опция `Format On Save`,
+  в противном случае вам не удасться создать коммит.
+- На проекте подключена проверка сообщений коммитов `commit-msg` хук со  конвенцией написания коммитов.
+  пример написания сообщения коммита:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  ```
+  fix: убрано логирование включенное для отладки
 
-## Running end-to-end tests
+  ...
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  feat(12345): добавлена возможность выбора роли пользователя
 
-## Further help
+  ...
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  refactor(auth): добавлен сервис для авторизации пользователей
+  ```
