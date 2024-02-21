@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MainPageComponent } from './main-page.component'
 import { RouterModule, Routes } from '@angular/router'
-import { ItemListModule } from '../../shared/components/item-list/item-list.module'
+import { TableModule } from 'src/app/shared/components/table/table.module'
+import { UserTableModule } from 'src/app/pages/main-page/components/user-table/user-table.module'
 
 const routes: Routes = [
   {
@@ -18,9 +19,9 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
-    ItemListModule,
+    TableModule,
+    UserTableModule,
   ],
   providers: [],
-  bootstrap: [MainPageComponent],
 })
 export class MainPageModule {}
