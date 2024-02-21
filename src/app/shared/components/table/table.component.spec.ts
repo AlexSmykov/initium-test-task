@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ItemListComponent } from './item-list.component'
+import { TableComponent } from 'src/app/shared/components/table/table.component'
 
 describe('MainPageComponent', () => {
-  let component: ItemListComponent
-  let fixture: ComponentFixture<ItemListComponent>
+  let component: TableComponent
+  let fixture: ComponentFixture<TableComponent>
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ItemListComponent],
+      declarations: [TableComponent],
     })
-    fixture = TestBed.createComponent(ItemListComponent)
+    fixture = TestBed.createComponent(TableComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
