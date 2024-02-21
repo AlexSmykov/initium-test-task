@@ -25,6 +25,16 @@
       gap: 10px;
 
       height: 56px;
+
+      &__one {
+        &.disabled {
+          pointer-events: none;
+
+          .table__action-buttons__icon {
+            color: var(--icon-disable-color);
+          }
+        }
+      }
     }
 
     &__headers {

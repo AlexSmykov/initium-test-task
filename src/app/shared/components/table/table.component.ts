@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -6,7 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core'
-import { Observable } from 'rxjs'
+import { Observable, take } from 'rxjs'
 import { FormControl, NonNullableFormBuilder } from '@angular/forms'
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
 import { CheckboxComponent } from 'src/app/shared/components/checkbox/checkbox.component'
@@ -22,6 +23,7 @@ import { ESortState } from 'src/app/shared/components/table/table.enum'
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent<T extends TTableItem> implements OnInit {
   @Input({ required: true }) items!: Observable<T[] | null>
@@ -44,6 +46,8 @@ export class TableComponent<T extends TTableItem> implements OnInit {
   }
 
   ESortState = ESortState
+
+  anyItemSelected = false
 
   get itemsWidthInPercent(): number {
     return this.configs
@@ -76,6 +80,7 @@ export class TableComponent<T extends TTableItem> implements OnInit {
     this.allCheckboxControl.valueChanges
       .pipe(untilDestroyed(this))
       .subscribe((changes) => {
+        this.anyItemSelected = changes
         this.checkboxFormArray.patchValue(
           Array(this.checkboxFormArray.length).fill(changes),
           { emitEvent: false }
@@ -89,10 +94,13 @@ export class TableComponent<T extends TTableItem> implements OnInit {
       .subscribe((changes) => {
         if (changes.every((value) => !value)) {
           this.allCheckboxControl.patchValue(false)
+          this.anyItemSelected = false
         } else if (changes.every((value) => value)) {
           this.allCheckboxControl.patchValue(true)
+          this.anyItemSelected = true
         } else {
           this.allCheckboxComponent?.setIndeterminate()
+          this.anyItemSelected = true
         }
       })
   }
@@ -115,5 +123,15 @@ export class TableComponent<T extends TTableItem> implements OnInit {
     return this.currentSortState.field === field
       ? this.currentSortState.state
       : ESortState.DEFAULT
+  }
+
+  onDelete(): void {
+    this.items.pipe(take(1)).subscribe((items) => {
+      this.delete.emit(
+        items!
+          .filter((_, index) => this.checkboxFormArray.controls[index].value)
+          .map((items) => items.id!)
+      )
+    })
   }
 }
