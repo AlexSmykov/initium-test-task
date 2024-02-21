@@ -16,8 +16,9 @@ export class UsersApiService {
   }
 
   static deserialize(dto: TUserListDto): TUser[] {
-    return dto.users.map((userDto) => {
+    return dto.users.map((userDto, index) => {
       return {
+        id: new Date().getTime() + index,
         [EUserFields.NAME]: userDto.name,
         [EUserFields.SURNAME]: userDto.surname,
         [EUserFields.EMAIL]: userDto.email,

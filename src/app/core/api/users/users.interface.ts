@@ -6,6 +6,7 @@ export enum EUserFields {
 }
 
 export type TUser = {
+  id?: number
   [EUserFields.NAME]: string
   [EUserFields.SURNAME]: string
   [EUserFields.EMAIL]: string
