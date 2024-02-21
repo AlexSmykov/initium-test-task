@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser'
 import { AppComponent } from './app.component'
 import { RouterModule, Routes } from '@angular/router'
 import { EPartialRoutes } from './shared/routing-paths'
+import { AngularSvgIconModule } from 'angular-svg-icon'
+import { HttpClientModule } from '@angular/common/http'
 
 const routes: Routes = [
   {
@@ -22,8 +24,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
-  providers: [],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    AngularSvgIconModule.forRoot(),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
