@@ -1,5 +1,5 @@
 {
-  "/api/*": {
+  "*/api/*": {
     "target": "https://test-data.directorix.cloud",
     "secure": false,
     "changeOrigin": true,
