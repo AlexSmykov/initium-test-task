@@ -108,14 +108,14 @@ export class TableComponent<T extends TTableItem> implements OnInit {
   onSortChanges(field: string): void {
     if (this.currentSortState.field === field) {
       this.currentSortState.state =
-        (this.currentSortState.state + 1) % this.configs.length
+        (this.currentSortState.state + 1) %
+        (Object.entries(ESortState).length / 2)
     } else {
       this.currentSortState = {
         field: field,
         state: ESortState.ASCENDING,
       }
     }
-
     this.sortChange.emit(this.currentSortState)
   }
 

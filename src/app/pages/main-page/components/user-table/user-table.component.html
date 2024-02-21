@@ -1,9 +1,10 @@
 <app-table
-  [items]="users"
+  [items]="users$"
   [configs]="tableConfigs"
   (create)="isCreateModalShow = true"
   (delete)="onItemsDelete($event)"
   (itemClicked)="onItemClicked($event)"
+  (sortChange)="onSortChange($event)"
 ></app-table>
 
 <!--Модалка создания пользователя-->

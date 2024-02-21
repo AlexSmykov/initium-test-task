@@ -8,6 +8,7 @@ import { UserTableService } from 'src/app/pages/main-page/components/user-table/
 import { TUser } from 'src/app/core/api/users/users.interface'
 import { UserFormModalHelperService } from 'src/app/pages/main-page/components/user-table/components/user-form/user-form-modal-helper.service'
 import { UserDeleteModalHelperService } from 'src/app/pages/main-page/components/user-table/components/user-delete-modal/user-delete-modal-helper.service'
+import { TSortConfigs } from 'src/app/shared/components/table/table.interface'
 
 @Component({
   selector: 'app-user-table',
@@ -20,7 +21,7 @@ import { UserDeleteModalHelperService } from 'src/app/pages/main-page/components
   ],
 })
 export class UserTableComponent implements OnInit {
-  users = this.userTableService.users$
+  users$ = this.userTableService.users$
 
   tableConfigs = UserTableConfigs
 
@@ -38,6 +39,10 @@ export class UserTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.userTableService.updateUsers()
+  }
+
+  onSortChange(sort: TSortConfigs): void {
+    this.userTableService.updateUsers({ sorting: sort })
   }
 
   onItemClicked(user: TUser): void {
