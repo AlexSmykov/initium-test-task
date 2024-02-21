@@ -1,7 +1,28 @@
 :root {
+  // Черный и белый дефолтные цвета (если вдруг понадобится изменить их)
   --default-white-color: #fff;
   --default-black-color: #000;
 
+  // Основные переменные без особой категории
   --backgroud-color: #e9f3ff;
+
+  // Для текста
   --primary-text-color: #2f7fd5;
+  --header-text-color: #2f4c97;
+  --hover-selectable-text-color: #295dc7;
+
+  // Для списка
+  --list-item-border-color: #ababac40;
+  --list-item-hover-color: #8fafff15;
+  --list-item-selected-color: #f1f5f9;
+
+  // Для иконок
+  --icon-default-color: #304879;
+  --icon-hover-color: #e2eeff;
+  --icon-click-color: #b5d3ff;
+  --icon-disable-color: #a8b0bf;
+
+  // Для чекбокса
+  --checkbox-border-color: #dadada;
+  --checkbox-checked-color: #4a95f7;
 }
