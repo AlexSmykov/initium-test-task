@@ -18,5 +18,6 @@ export type TTableHeaderConfig = {
 }
 
 export type TTableItem = {
+  id?: number
   // Здесь могут быть дополнительные поля в будущем
 }

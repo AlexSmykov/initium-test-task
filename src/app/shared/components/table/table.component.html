@@ -1,11 +1,21 @@
 <ul class="table">
   <li class="table__action-buttons">
-    <app-clickable-icon>
+    <app-clickable-icon
+      class="table__action-buttons__one"
+      (click)="create.emit()"
+    >
       <svg-icon src="assets/icons/add.svg"></svg-icon>
     </app-clickable-icon>
 
-    <app-clickable-icon>
-      <svg-icon src="assets/icons/delete.svg"></svg-icon>
+    <app-clickable-icon
+      class="table__action-buttons__one"
+      [ngClass]="{ disabled: !anyItemSelected }"
+      (click)="onDelete()"
+    >
+      <svg-icon
+        class="table__action-buttons__icon"
+        src="assets/icons/delete.svg"
+      ></svg-icon>
     </app-clickable-icon>
   </li>
 

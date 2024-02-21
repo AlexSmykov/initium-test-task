@@ -22,6 +22,10 @@ export class UserTableService {
     const savedUsers = this.localStorageService.getItem(LOCAL_STORAGE_USERS)
     if (!savedUsers)
       this.usersApiService.getUsers().subscribe((users) => {
+        this.localStorageService.setItem(
+          LOCAL_STORAGE_USERS,
+          JSON.stringify(users)
+        )
         this._users$.next(users)
       })
     else {

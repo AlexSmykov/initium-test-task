@@ -1,0 +1,65 @@
+.control-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .input-container {
+    --input-height: 56px;
+    --input-padding-left: 16px;
+
+    position: relative;
+
+    border-radius: 4px;
+    outline: 1px solid var(--input-border-color);
+    height: var(--input-height);
+
+    &.error {
+      outline-color: var(--error-color);
+      color: var(--error-color);
+
+      .label {
+        color: var(--error-color);
+      }
+    }
+
+    .label {
+      position: absolute;
+      top: -1rem;
+      left: var(--input-padding-left);
+
+      padding: 4px;
+      margin: 0;
+      width: fit-content;
+      background: var(--default-white-color);
+      z-index: 1;
+    }
+
+    .input {
+      position: absolute;
+      top: 0;
+      left: var(--input-padding-left);
+
+      height: 100%;
+      width: calc(100% - var(--input-padding-left) * 2);
+      border: none;
+      outline: none;
+      padding: 0;
+
+      font-size: 1rem;
+
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+  }
+
+  .error-text {
+    height: 1rem;
+    text-align: right;
+    color: var(--error-color);
+    font-size: 0.8rem;
+    padding: 0 16px;
+    margin: 0;
+  }
+}

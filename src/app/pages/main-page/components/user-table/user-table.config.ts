@@ -1,8 +1,9 @@
 import { TTableHeaderConfig } from 'src/app/shared/components/table/table.interface'
 import { EColumnTextAlign } from 'src/app/shared/components/table/table.enum'
 import { EUserFields } from 'src/app/core/api/users/users.interface'
+import { TModalConfig } from 'src/app/shared/components/modal/modal.interface'
 
-export const TUserTableConfigs: TTableHeaderConfig[] = [
+export const UserTableConfigs: TTableHeaderConfig[] = [
   {
     key: EUserFields.NAME,
     title: 'Имя',
@@ -33,3 +34,15 @@ export const TUserTableConfigs: TTableHeaderConfig[] = [
     isSortable: true,
   },
 ]
+
+export const UserTableCreateModalConfig: TModalConfig = {
+  closable: false,
+  widthInPercent: 20,
+  okText: 'Добавить',
+}
+
+export const UserTableDeleteModalConfig: TModalConfig = {
+  closable: false,
+  widthInPercent: 20,
+  okText: 'Удалить',
+}

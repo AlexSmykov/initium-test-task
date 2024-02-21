@@ -1,0 +1,17 @@
+<div class="control-container">
+  <div
+    class="input-container"
+    [ngClass]="{ error: control.invalid && control.touched }"
+  >
+    <p *ngIf="control.value" class="label">{{ title }}</p>
+    <input
+      type="text"
+      class="input"
+      [placeholder]="title"
+      [formControl]="control"
+    />
+  </div>
+  <p class="error-text">
+    {{ checkError(control) }}
+  </p>
+</div>

@@ -1,0 +1,23 @@
+<h1 class="title">Новый клиент</h1>
+
+<div class="form-container">
+  <app-text-input
+    [control]="userFormGroup.controls.name"
+    [title]="'Имя'"
+  ></app-text-input>
+
+  <app-text-input
+    [control]="userFormGroup.controls.surname"
+    [title]="'Фамилия'"
+  ></app-text-input>
+
+  <app-text-input
+    [control]="userFormGroup.controls.email"
+    [title]="'E-mail'"
+  ></app-text-input>
+
+  <app-text-input
+    [control]="userFormGroup.controls.phone"
+    [title]="'Телефон'"
+  ></app-text-input>
+</div>
