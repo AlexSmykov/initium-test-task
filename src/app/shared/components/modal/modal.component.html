@@ -1,0 +1,24 @@
+<div class="modal__background" (click)="config.closable ? closeModal() : {}">
+  <div
+    class="modal__container"
+    (click)="config.closable ? $event.stopPropagation() : {}"
+    [ngStyle]="{ width: (config.widthInPercent ?? 20) + '%' }"
+  >
+    <ng-content></ng-content>
+
+    <div class="modal__container__buttons">
+      <app-secondary-button
+        *ngIf="config.cancelButton ?? true"
+        [text]="config.cancelText"
+        (click)="closeModal()"
+      ></app-secondary-button>
+
+      <app-primary-button
+        *ngIf="config.okButton ?? true"
+        [disable]="okButtonDisable"
+        [text]="config.okText"
+        (click)="primaryAction()"
+      ></app-primary-button>
+    </div>
+  </div>
+</div>
