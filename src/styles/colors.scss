@@ -5,6 +5,9 @@
 
   // Основные переменные без особой категории
   --backgroud-color: #e9f3ff;
+  --modal-background-color: #26323840;
+  --error-color: #da1b1b;
+  --input-border-color: #505662;
 
   // Для текста
   --primary-text-color: #2f7fd5;
@@ -25,4 +28,15 @@
   // Для чекбокса
   --checkbox-border-color: #dadada;
   --checkbox-checked-color: #4a95f7;
+
+  // Для главной кнопки
+  --primary-button-default-color: #2f67d5;
+  --primary-button-hover-color: #3c7cf8;
+  --primary-button-pressed-color: #194eb6;
+  --primary-button-disabled-color: #d8dee9;
+
+  // Для вторичной кнопки
+  --secondary-button-default-color: #fff;
+  --secondar-button-hover-color: #3c7cf81a;
+  --secondar-button-pressed-color: #194eb633;
 }
